@@ -1,0 +1,26 @@
+version: '3.2'
+
+services:
+  target:
+    image: nginx:aline
+    networks:
+      -app
+
+  zaproxy:
+    image: owasp/zap2docker-stable
+    command: [
+      "zap.sh",
+      "-daemon",
+      "-host", "0.0.0.0", "-port", "8080",
+      "-config api.addrs.addr.name=.*",
+      "-config api.addrs.addr.regex=true"
+    ]
+    networks:
+      - app
+    expose:
+      # ZAP is running on 8090, we want it to be accessible by our tools
+      - 9080:8080
+    links:
+      - target
+networks:
+  app:

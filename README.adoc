@@ -1,0 +1,7 @@
+= WIP: OWASP ZAP Workbench
+
+This is a workbench project to tinker around with
+the https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project[OWASP Zed Attack Proxy Project].
+
+It uses https://www.testcontainers.org/[Testcontainers] to setup the test environment using a Docker container running
+the proxy.
